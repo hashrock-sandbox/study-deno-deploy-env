@@ -8,6 +8,10 @@ Deno.serve(async (_request: Request) => {
     users.push(user);
   }
 
+  const misc = [
+    ["host", _request.headers.get("host")],
+  ];
+
   const envs = [
     ["FOO", Deno.env.get("FOO")],
     ["BAR", Deno.env.get("BAR")],
@@ -25,6 +29,14 @@ Deno.serve(async (_request: Request) => {
       <body>
         <h1>Hello, world!</h1>
         <p>Version: ${version}</p>
+
+        <h2>Misc:</h2>
+        <ul>
+          ${
+    misc.map(([name, value]) => `<li>${name}: ${value}</li>`).join("\n")
+  }
+        </ul>
+
         <h2>Environment variables:</h2>
         <ul>
           ${
