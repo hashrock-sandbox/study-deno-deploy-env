@@ -15,6 +15,8 @@ Deno.serve(async (_request: Request) => {
     ["DENO_DEPLOYMENT_ID", Deno.env.get("DENO_DEPLOYMENT_ID")],
   ];
 
+  const version = "20240625_0245";
+
   const html = `
     <html>
       <head>
@@ -22,6 +24,7 @@ Deno.serve(async (_request: Request) => {
       </head>
       <body>
         <h1>Hello, world!</h1>
+        <p>Version: ${version}</p>
         <h2>Environment variables:</h2>
         <ul>
           ${
